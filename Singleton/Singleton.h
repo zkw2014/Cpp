@@ -1,7 +1,7 @@
 /**************************************************************
 	> file: Singleton.h
 	> by: zkw
-	> description:
+	> description: 双重锁模式来实现Singleton
  **************************************************************/
 #ifndef SINGLETON_H_
 #define SINGLETON_H_

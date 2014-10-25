@@ -19,11 +19,11 @@ void *threadFunc(void *arg)
 
 int main(void)
 {
-	vector<pthread_t> vec(50);
+	vector<pthread_t> vec(20);
 
 	vector<pthread_t>::iterator it = vec.begin();
 	for (; it != vec.end(); ++it) {
-		pthread_create(&*it, NULL, threadFunc, NULL);
+		pthread_create(&*it, NULL, threadFunc, NULL); //注意：it是个对象，只是具有指针的特性
 	}
 
 	it = vec.begin();
