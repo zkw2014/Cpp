@@ -9,7 +9,7 @@ OBJS = Singleton.o test.o
 all : $(BIN)
 
 $(BIN) : $(OBJS)
-	$(CXX) $(CPPFLAGS) $^ -o $@
+	$(CXX) $(CPPFLAGS) $^ -o $@ -lpthread -std=C++0x
 %.o : %.cpp
 	$(CXX) $(CPPFLAGS) -c $< -o $@
 
