@@ -4,7 +4,7 @@ CXX = g++
 CPPFLAGS = -Wall -g
 
 BIN = main
-OBJS = Singleton.o test.o
+OBJS = Singleton.o MutexLock.o test.o
 
 all : $(BIN)
 

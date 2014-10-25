@@ -5,6 +5,7 @@
  **************************************************************/
 #ifndef SINGLETON_H_
 #define SINGLETON_H_
+#include "MutexLock.h"
 
 class Singleton
 {
@@ -18,6 +19,7 @@ class Singleton
 		Singleton &operator=(const Singleton &other);
 		
 		static Singleton *p_instance;
+		static MutexLock mutex_lock_;
 };
 
 #endif //SINGLETON_H_
