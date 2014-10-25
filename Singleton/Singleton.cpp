@@ -1,7 +1,7 @@
 /**************************************************************
-	> file: Singleton.cpp
-	> by: zkw
-	> description:
+  > file: Singleton.cpp
+  > by: zkw
+  > description:
  **************************************************************/
 #include <iostream>
 #include "Singleton.h"
@@ -17,11 +17,14 @@ Singleton::Singleton()
 
 Singleton *Singleton::getInstance()
 {
-	mutex_lock_.lock();
-	if (NULL == p_instance) {
-		p_instance = new Singleton;
+	if (NULL == p_instance) //双重锁模式来解决每次调用getInstance都要加锁的问题
+	{
+		mutex_lock_.lock();
+		if (NULL == p_instance) {
+			p_instance = new Singleton;
+		}
+		mutex_lock_.unlock();
 	}
-	mutex_lock_.unlock();
 
 	return p_instance;
 }
