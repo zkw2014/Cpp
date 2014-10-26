@@ -4,7 +4,7 @@ CXX = g++
 CPPFLAGS = -Wall -g
 
 BIN = main
-OBJS = Condition.o MutexLock.o test.o
+OBJS = test_Thread.o Thread.o
 
 all : $(BIN)
 
