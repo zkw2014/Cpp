@@ -7,9 +7,10 @@
 #define CONDITION_H_
 
 #include <pthread.h>
+#include "NonCopyable.h"
 class MutexLock; //因为只用到了引用
 
-class Condition
+class Condition : private NonCopyable
 {
 	public:
 		Condition(MutexLock &mutex_lock);
