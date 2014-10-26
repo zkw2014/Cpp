@@ -4,12 +4,12 @@ CXX = g++
 CPPFLAGS = -Wall -g
 
 BIN = main
-OBJS = test_Thread.o Thread.o
+OBJS = test_Queue.o Queue.o
 
 all : $(BIN)
 
 $(BIN) : $(OBJS)
-	$(CXX) $(CPPFLAGS) $^ -o $@ -lpthread -std=C++0x
+	$(CXX) $(CPPFLAGS) $^ -o $@
 %.o : %.cpp
 	$(CXX) $(CPPFLAGS) -c $< -o $@
 
