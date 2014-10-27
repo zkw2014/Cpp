@@ -4,7 +4,7 @@ CXX = g++
 CPPFLAGS = -Wall -g
 
 BIN = main
-OBJS = test_Queue.o Queue.o
+OBJS = test_Buffer.o Buffer.o Queue.o MutexLock.o Condition.o
 
 all : $(BIN)
 

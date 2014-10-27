@@ -1,15 +1,16 @@
 /**************************************************************
-	> file: Condition.cpp
-	> by: zkw
-	> description:
+  > file: Condition.cpp
+  > by: zkw
+  > description:
  **************************************************************/
 #include <stdexcept>
+#include <iostream>
 #include "Condition.h"
 #include "MutexLock.h"
 using namespace std;
 
-Condition::Condition(MutexLock &mutex_lock)
-	:mutex_lock_(mutex_lock)
+Condition::Condition(MutexLock &mutex_lock):
+	mutex_lock_(mutex_lock)
 {
 	if (pthread_cond_init(&cond_lock_, NULL) != 0)
 		throw runtime_error("pthread_cond_init");
