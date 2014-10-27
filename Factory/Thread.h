@@ -9,12 +9,14 @@
 #include <pthread.h>
 #include "NonCopyable.h"
 
-class Thread : private NonCopyable
+class Buffer;
+
+class Thread
 {
 	public:
 		typedef void *(*FUNC)(void *arg);
 
-		Thread(FUNC callback);
+		Thread(FUNC callback, Buffer &buffer);
 		~Thread();
 		void join();
 		void start();
@@ -23,6 +25,7 @@ class Thread : private NonCopyable
 		pthread_t tid_; 
 		bool is_started_; //用来表示创建的新线程的运行状态
 		FUNC callback_;
+		Buffer &buffer_;
 };
 
 #endif //THREAD_H_

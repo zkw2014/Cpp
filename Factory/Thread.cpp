@@ -8,8 +8,8 @@
 #include "Thread.h"
 using namespace std;
 
-Thread::Thread(FUNC callback)
-	:tid_(-1), is_started_(false), callback_(callback)
+Thread::Thread(FUNC callback, Buffer &buffer)
+	:tid_(-1), is_started_(false), callback_(callback), buffer_(buffer)
 {
 }
 
@@ -31,7 +31,7 @@ void Thread::join()
 
 void Thread::start()
 {
-	if (pthread_create(&tid_, NULL, callback_, NULL) != 0)
+	if (pthread_create(&tid_, NULL, callback_, &buffer_) != 0)
 		throw runtime_error("pthread_create");
 	is_started_ = true;
 }
