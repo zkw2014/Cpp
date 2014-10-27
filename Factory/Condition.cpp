@@ -3,6 +3,7 @@
   > by: zkw
   > description:
  **************************************************************/
+
 #include <stdexcept>
 #include <iostream>
 #include "Condition.h"

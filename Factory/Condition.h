@@ -3,6 +3,7 @@
 	> by: zkw
 	> description:
  **************************************************************/
+
 #ifndef CONDITION_H_
 #define CONDITION_H_
 

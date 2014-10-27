@@ -3,12 +3,12 @@
 	> by: zkw
 	> description:
  **************************************************************/
+
 #ifndef THREAD_H_
 #define THREAD_H_
 
 #include <pthread.h>
 #include "NonCopyable.h"
-
 class Buffer;
 
 class Thread

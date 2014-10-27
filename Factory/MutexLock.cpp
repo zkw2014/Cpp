@@ -3,6 +3,7 @@
 	> by: zkw
 	> description:
  **************************************************************/
+
 #include "MutexLock.h" 
 #include <stdexcept>
 using namespace std;
@@ -30,7 +31,6 @@ void MutexLock::unlock()
 	if (pthread_mutex_unlock(&mutex_lock_) != 0)
 		throw runtime_error("pthread_mutex_unlock");
 }
-
 
 pthread_mutex_t *MutexLock::getLockPtr()
 {
