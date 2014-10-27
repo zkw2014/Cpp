@@ -14,7 +14,8 @@
 class Buffer : private NonCopyable
 {
 	public:
-		Buffer(size_t capacity);
+		typedef void (*FUNC)(int *);
+		Buffer(size_t capacity, FUNC callback);
 		void produce(int data);
 		int consume();
 		size_t getCapacity() const;
@@ -23,6 +24,8 @@ class Buffer : private NonCopyable
 		bool isFull() const;
 
 	private:
+		FUNC callback_;
+
 		Queue queue_;
 		MutexLock lock_;
 		Condition hasTask_;

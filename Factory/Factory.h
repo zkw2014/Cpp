@@ -16,8 +16,8 @@ class Factory : private NonCopyable
 {
 	public:
 		typedef void *(*FUNC)(void *);
-
-		Factory(int producer_nums, FUNC producer_func, int consumer_nums, FUNC consumer_func, size_t buffer_capacity);
+		typedef void (*FUNC2)(int *);
+		Factory(int producer_nums, FUNC producer_func, int consumer_nums, FUNC consumer_func, size_t buffer_capacity, FUNC2 buffer_func);
 		void start();
 
 	private:

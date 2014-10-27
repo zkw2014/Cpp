@@ -1,7 +1,7 @@
 /************************************************************************
-  > File: test_Factory.cpp
+  > File: main.cpp
   > By: zkw
-  > Description: 
+  > Description: 为了测试Factory类
  ************************************************************************/
 
 #include <iostream>
@@ -35,13 +35,19 @@ void *consumer(void *arg)
 	return NULL;
 }
 
+void bufferFunc(int *p) //加工处理：变为原来的负数
+{
+	int temp = *p;
+	*p = (-temp);
+}
+
 int main(void)
 {
 	size_t producer_nums = 2;
 	size_t consumer_nums = 10;
 	size_t buffer_capacity = 5;
 
-	Factory f1(producer_nums, producer, consumer_nums, consumer, buffer_capacity);
+	Factory f1(producer_nums, producer, consumer_nums, consumer, buffer_capacity, bufferFunc);
 	f1.start();
 
 	return 0;

@@ -8,8 +8,10 @@
 #include "Buffer.h"
 using namespace std;
 
-Buffer::Buffer(size_t capacity):
-	hasTask_(lock_), hasSpace_(lock_), capacity_(capacity), size_(0)
+Buffer::Buffer(size_t capacity, FUNC callback):
+	callback_(callback),
+	hasTask_(lock_),hasSpace_(lock_),
+	capacity_(capacity), size_(0)
 {
 }
 
@@ -22,6 +24,12 @@ void Buffer::produce(int data)
 	while (isFull()) {
 		hasSpace_.wait();
 	}
+
+	cout << "put material: [" << data << "] into the buffer." << endl; 
+	int temp = data;
+	callback_(&data); //对原材料进行加工，将加工后的成品放到队列中
+	cout << "after manufacture, material: [" << temp << "] turn into: [" << data << "]." << endl;
+
 	if (isEmpty()) {
 		queue_.push(data);
 		hasTask_.notify();
@@ -29,7 +37,6 @@ void Buffer::produce(int data)
 		queue_.push(data);
 	}
 	++size_;
-	cout << "produce: " << data << endl;
 
 	lock_.unlock();
 }
@@ -48,7 +55,7 @@ int Buffer::consume()
 		queue_.pop();
 	}
 	--size_;
-	cout << "consume: " << temp << endl;
+	cout << "consume the end product: [" << temp << "]." << endl;
 
 	lock_.unlock();
 	return temp;
