@@ -31,7 +31,7 @@ void Thread::join()
 
 void Thread::start()
 {
-	if (pthread_create(&tid_, NULL, callback_, &buffer_) != 0)
+	if (pthread_create(&tid_, NULL, callback_, &buffer_) != 0) //由这里的callback_来调用main.cpp中用户给定的线程函数
 		throw runtime_error("pthread_create");
 	is_started_ = true;
 }

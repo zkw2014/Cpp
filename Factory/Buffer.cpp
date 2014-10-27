@@ -27,6 +27,7 @@ void Buffer::produce(int data)
 
 	cout << "put material: [" << data << "] into the buffer." << endl; 
 	int temp = data;
+	//由这里的callback_来调用main.cpp中用户设定的buffer功能函数
 	callback_(&data); //对原材料进行加工，将加工后的成品放到队列中
 	cout << "after manufacture, material: [" << temp << "] turn into: [" << data << "]." << endl;
 
