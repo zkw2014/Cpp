@@ -14,7 +14,7 @@ using namespace std;
 void *producer(void *arg)
 {
 	srand(time(NULL));
-	Buffer *buffer = static_cast<Buffer *>(arg);
+	Buffer *buffer = static_cast<Buffer *>(arg); //缺点，这些事不应该交由客户来完成
 	while (1) {
 		int data = rand()%100;
 		buffer->produce(data);
